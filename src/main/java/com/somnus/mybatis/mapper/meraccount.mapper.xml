@@ -53,7 +53,6 @@
     MODIFY_BY, MODIFY_TIME
   </sql>
   
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     <!--
       WARNING - @mbggenerated
@@ -64,6 +63,14 @@
     <include refid="Base_Column_List" />
     from tcim_mer_account
     where ACCT_ID = #{acctId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByAcctcode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tcim_mer_account
+    where 
+    ACCT_CODE = #{acctCode,jdbcType=VARCHAR}
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

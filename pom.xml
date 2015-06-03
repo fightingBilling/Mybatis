@@ -19,6 +19,7 @@
 	<logback.version>1.0.6</logback.version>
 	<!-- mybatis -->
 	<mybatis.version>3.1.1</mybatis.version>
+	<mybatis.paginator.version>1.2.17</mybatis.paginator.version>
   </properties>
 
   <dependencies>
@@ -68,6 +69,13 @@
 		<groupId>org.mybatis</groupId>
 		<artifactId>mybatis</artifactId>
 		<version>${mybatis.version}</version>
+	</dependency>
+	
+	<!--pagination -->
+	<dependency>
+		<groupId>com.github.miemiedev</groupId>
+		<artifactId>mybatis-paginator</artifactId>
+		<version>${mybatis.paginator.version}</version>
 	</dependency>
   </dependencies>
   

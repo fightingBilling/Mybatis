@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- 定义别名 -->
-	<typeAliases>
-		<typeAlias type="com.somnus.mybatis.domain.MerAccount" alias="MerAccount"/>
-		<typeAlias type="com.somnus.mybatis.domain.TrnTransaction" alias="TrnTransaction"/>
-	</typeAliases>
-	
+
+	<settings>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+	<plugins>
+        <plugin interceptor="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
+            <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"/>
+        </plugin>
+    </plugins>
+    
 	<environments default="dev">
 		<environment id="dev">
 			<transactionManager type="JDBC" />
@@ -26,4 +30,5 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/somnus/mybatis/mapper/meraccount.mapper.xml" />
 		<mapper resource="com/somnus/mybatis/mapper/trn_transaction.mapper.xml" />
 	</mappers>
+    
 </configuration>

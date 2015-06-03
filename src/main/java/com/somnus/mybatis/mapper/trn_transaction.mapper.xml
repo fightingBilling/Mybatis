@@ -96,12 +96,6 @@
     from tcor_trn_transaction
     where ACC_TRAN_NO = #{accTranNo,jdbcType=VARCHAR}
   </select>
-  <select id="selectBySysCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from tcor_trn_transaction
-    where SYS_CODE = #{sysCode,jdbcType=VARCHAR}
-  </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from tcor_trn_transaction

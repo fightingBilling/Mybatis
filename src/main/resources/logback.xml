@@ -33,7 +33,6 @@
     <logger name="java.sql.Connection" level="DEBUG" />  
     <logger name="java.sql.Statement" level="DEBUG" />  
     <logger name="java.sql.PreparedStatement" level="DEBUG" /> 
-    <logger name="org.springframework" level="info" />
 
 	<!-- root级别控制 -->
 	<root level="INFO">

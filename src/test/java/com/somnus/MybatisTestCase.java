@@ -1,7 +1,9 @@
 package com.somnus;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -15,6 +17,9 @@ import org.junit.rules.TestName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.miemiedev.mybatis.paginator.domain.Order;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.somnus.mybatis.domain.MerAccount;
 import com.somnus.mybatis.domain.TrnTransaction;
 
@@ -56,9 +61,28 @@ public class MybatisTestCase {
     
     @Test
     public void list(){
-    	List<TrnTransaction> list = session.selectList("com.somnus.mybatis.doamin.TransactionMappper.selectBySysCode", "1001"); 
-    	for(TrnTransaction data:list){
-    		System.out.println(data.getAccTranNo());
+    	List<MerAccount> list = session.selectList("com.somnus.mybatis.doamin.MerAccountMapper.selectByAcctcode", "1020550016"); 
+    	for(MerAccount account:list){
+    		System.out.println(account.getBankName());
     	}
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@Test
+    public void selectByAcctcode(){
+    	int page = 1;
+        int pageSize = 20;
+        String sortString = "bank_code.asc,bank_acct_no.desc";
+        PageBounds pageBounds = new PageBounds(page, pageSize , Order.formString(sortString));
+        
+        PageList<MerAccount> pagelist = (PageList) session.selectList("com.somnus.mybatis.doamin.MerAccountMapper.selectByAcctcode", "1020550016", pageBounds);
+        
+        int total = pagelist.getPaginator().getTotalCount();//总记录数
+        System.out.println(total);
+        
+        for(MerAccount account:pagelist){
+        	System.out.println(account.getBankName());
+        }
+        
     }
 }
