@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.somnus.mybatis.doamin.TransactionMappper" >
+<mapper namespace="com.somnus.mybatis.dao.TrnTransactionDao" >
   <resultMap id="BaseResultMap" type="com.somnus.mybatis.domain.TrnTransaction" >
     <id column="ACC_TRAN_NO" property="accTranNo" jdbcType="VARCHAR" />
     <result column="SYS_CODE" property="sysCode" jdbcType="VARCHAR" />

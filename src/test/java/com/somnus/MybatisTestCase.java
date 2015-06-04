@@ -1,9 +1,7 @@
 package com.somnus;
 
 import java.io.Reader;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -20,8 +18,8 @@ import org.slf4j.LoggerFactory;
 import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import com.somnus.mybatis.dao.MerAccountDao;
 import com.somnus.mybatis.domain.MerAccount;
-import com.somnus.mybatis.domain.TrnTransaction;
 
 /** 
  * @Title: MybatisTestCase.java 
@@ -55,13 +53,13 @@ public class MybatisTestCase {
     
     @Test
     public void load(){
-    	MerAccount meraccount = (MerAccount) session.selectOne("com.somnus.mybatis.doamin.MerAccountMapper.selectByPrimaryKey", "2000002493"); 
+    	MerAccount meraccount = (MerAccount) session.selectOne("com.somnus.mybatis.dao.MerAccountDao.selectByPrimaryKey", "2000002493"); 
     	System.out.println(meraccount.getAcctName());
     }
     
     @Test
     public void list(){
-    	List<MerAccount> list = session.selectList("com.somnus.mybatis.doamin.MerAccountMapper.selectByAcctcode", "1020550016"); 
+    	List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByAcctcode", "1020550016"); 
     	for(MerAccount account:list){
     		System.out.println(account.getBankName());
     	}
@@ -83,6 +81,23 @@ public class MybatisTestCase {
         for(MerAccount account:pagelist){
         	System.out.println(account.getBankName());
         }
+    }
+    
+    @Test
+    public void selectByAcctcode2(){
+        int page = 1;
+        int pageSize = 20;
+        String sortString = "bank_code.asc,bank_acct_no.desc";
+        PageBounds pageBounds = new PageBounds(page, pageSize , Order.formString(sortString));
         
+        MerAccountDao dao = session.getMapper(MerAccountDao.class);
+        PageList<MerAccount> pagelist = dao.selectByAcctcode("1020550016", pageBounds);
+        
+        int total = pagelist.getPaginator().getTotalCount();//总记录数
+        System.out.println(total);
+        
+        for(MerAccount account:pagelist){
+            System.out.println(account.getBankName());
+        }
     }
 }

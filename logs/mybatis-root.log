@@ -1,0 +1,18 @@
+2015-06-04 09:17:53.645 [] INFO  [main] com.somnus.MybatisTestCase :调用测试方法: selectByAcctcode
+2015-06-04 09:17:56.514 [] DEBUG [main] java.sql.Connection :ooo Using Connection [com.mysql.jdbc.JDBC4Connection@8f44b01]
+2015-06-04 09:17:56.515 [] DEBUG [main] java.sql.Connection :==>  Preparing: select * from (select ACCT_ID, ACCT_CODE, MER_CODE, ACCT_NAME, CURRENCY, BANK_CODE, BANK_NAME, BANK_KEY, BRANCH_CODE, BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, STL_TYPE, BAL_FLOOR, AUTO_TRANSFER, MIN_TRANSFER, TRANSFER_PERIOD, IS_AUTO_STL, BEGIN_TRANSFER, TRANSFER_PRIORITY, ALLOW_IN, ALLOW_OUT, OUT_FLAG, REMARK, VERSION, STATUS, OPER_FLAG, EFFECT_DATE, LOSE_EFFECT_DATE, MODIFY_BY, MODIFY_TIME from tcim_mer_account where ACCT_CODE = ?) temp_order order by bank_code ASC, bank_acct_no DESC limit ? 
+2015-06-04 09:17:56.578 [] DEBUG [main] java.sql.PreparedStatement :==> Parameters: 1020550016(String), 20(Integer)
+2015-06-04 10:35:14.001 [] INFO  [main] com.somnus.MybatisTestCase :调用测试方法: selectByAcctcode2
+2015-06-04 10:38:18.393 [] INFO  [main] com.somnus.MybatisTestCase :调用测试方法: selectByAcctcode2
+2015-06-04 10:38:19.177 [] DEBUG [main] java.sql.Connection :ooo Using Connection [com.mysql.jdbc.JDBC4Connection@59b66caf]
+2015-06-04 10:38:19.177 [] DEBUG [main] java.sql.Connection :==>  Preparing: select * from (select ACCT_ID, ACCT_CODE, MER_CODE, ACCT_NAME, CURRENCY, BANK_CODE, BANK_NAME, BANK_KEY, BRANCH_CODE, BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, STL_TYPE, BAL_FLOOR, AUTO_TRANSFER, MIN_TRANSFER, TRANSFER_PERIOD, IS_AUTO_STL, BEGIN_TRANSFER, TRANSFER_PRIORITY, ALLOW_IN, ALLOW_OUT, OUT_FLAG, REMARK, VERSION, STATUS, OPER_FLAG, EFFECT_DATE, LOSE_EFFECT_DATE, MODIFY_BY, MODIFY_TIME from tcim_mer_account where ACCT_CODE = ?) temp_order order by bank_code ASC, bank_acct_no DESC limit ? 
+2015-06-04 10:38:19.220 [] DEBUG [main] java.sql.PreparedStatement :==> Parameters: 1020550016(String), 20(Integer)
+2015-06-04 10:40:59.468 [] INFO  [main] com.somnus.MybatisTestCase :调用测试方法: list
+2015-06-04 10:41:48.403 [] INFO  [main] com.somnus.MybatisTestCase :调用测试方法: load
+2015-06-04 10:41:49.155 [] DEBUG [main] java.sql.Connection :ooo Using Connection [com.mysql.jdbc.JDBC4Connection@5ab8695d]
+2015-06-04 10:41:49.155 [] DEBUG [main] java.sql.Connection :==>  Preparing: select ACCT_ID, ACCT_CODE, MER_CODE, ACCT_NAME, CURRENCY, BANK_CODE, BANK_NAME, BANK_KEY, BRANCH_CODE, BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, STL_TYPE, BAL_FLOOR, AUTO_TRANSFER, MIN_TRANSFER, TRANSFER_PERIOD, IS_AUTO_STL, BEGIN_TRANSFER, TRANSFER_PRIORITY, ALLOW_IN, ALLOW_OUT, OUT_FLAG, REMARK, VERSION, STATUS, OPER_FLAG, EFFECT_DATE, LOSE_EFFECT_DATE, MODIFY_BY, MODIFY_TIME from tcim_mer_account where ACCT_ID = ? 
+2015-06-04 10:41:49.212 [] DEBUG [main] java.sql.PreparedStatement :==> Parameters: 2000002493(String)
+2015-06-04 10:41:54.030 [] INFO  [main] com.somnus.MybatisTestCase :调用测试方法: list
+2015-06-04 10:41:54.647 [] DEBUG [main] java.sql.Connection :ooo Using Connection [com.mysql.jdbc.JDBC4Connection@10d8733]
+2015-06-04 10:41:54.647 [] DEBUG [main] java.sql.Connection :==>  Preparing: select ACCT_ID, ACCT_CODE, MER_CODE, ACCT_NAME, CURRENCY, BANK_CODE, BANK_NAME, BANK_KEY, BRANCH_CODE, BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, STL_TYPE, BAL_FLOOR, AUTO_TRANSFER, MIN_TRANSFER, TRANSFER_PERIOD, IS_AUTO_STL, BEGIN_TRANSFER, TRANSFER_PRIORITY, ALLOW_IN, ALLOW_OUT, OUT_FLAG, REMARK, VERSION, STATUS, OPER_FLAG, EFFECT_DATE, LOSE_EFFECT_DATE, MODIFY_BY, MODIFY_TIME from tcim_mer_account where ACCT_CODE = ? 
+2015-06-04 10:41:54.695 [] DEBUG [main] java.sql.PreparedStatement :==> Parameters: 1020550016(String)
