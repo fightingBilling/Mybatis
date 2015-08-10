@@ -86,7 +86,8 @@ public class MybatisTestCase {
         String sortString = "bank_code.asc,bank_acct_no.desc";
         PageBounds pageBounds = new PageBounds(page, pageSize , Order.formString(sortString));
         
-        PageList<MerAccount> pagelist = (PageList) session.selectList("com.somnus.mybatis.doamin.MerAccountMapper.selectByAcctcode", "1020550016", pageBounds);
+        PageList<MerAccount> pagelist = (PageList) session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByAcctcode", 
+                "1020550016", pageBounds);
         
         int total = pagelist.getPaginator().getTotalCount();//总记录数
         System.out.println(total);
