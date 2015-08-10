@@ -1,7 +1,9 @@
 package com.somnus;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -63,6 +65,17 @@ public class MybatisTestCase {
     	for(MerAccount account:list){
     		System.out.println(account.getBankName());
     	}
+    }
+    
+    @Test
+    public void list2(){
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("acctCode", "1020550016");
+        map.put("bankCode", "1100");
+        List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByCondition", map); 
+        for(MerAccount account:list){
+            System.out.println(account.getBankName());
+        }
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
