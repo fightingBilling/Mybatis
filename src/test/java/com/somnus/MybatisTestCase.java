@@ -100,7 +100,7 @@ public class MybatisTestCase {
     @Test
     public void selectByAcctcode2(){
         int page = 1;
-        int pageSize = 20;
+        int pageSize = 5;
         String sortString = "bank_code.asc,bank_acct_no.desc";
         PageBounds pageBounds = new PageBounds(page, pageSize , Order.formString(sortString));
         
