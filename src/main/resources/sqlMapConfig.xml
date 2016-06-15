@@ -15,7 +15,7 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<property name="url" value="jdbc:mysql://192.168.1.100:3306/mybatis?characterEncoding=utf-8" />
+				<property name="url" value="jdbc:mysql://183.60.227.88:3306/mybatis?characterEncoding=utf-8" />
 				<property name="username" value="root" />
 				<property name="password" value="passw0rd" />
 			</dataSource>
@@ -26,6 +26,7 @@
 	<mappers>
 		<mapper resource="com/somnus/mybatis/mapper/meraccount.mapper.xml" />
 		<mapper resource="com/somnus/mybatis/mapper/trn_transaction.mapper.xml" />
+		<mapper resource="com/somnus/mybatis/mapper/user.mapper.xml" />
 	</mappers>
     
 </configuration>

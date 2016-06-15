@@ -22,6 +22,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.somnus.mybatis.dao.MerAccountDao;
 import com.somnus.mybatis.domain.MerAccount;
+import com.somnus.mybatis.domain.User;
 
 /** 
  * @Title: MybatisTestCase.java 
@@ -51,6 +52,17 @@ public class MybatisTestCase {
 
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void 日期映射测试(){
+    	User user = (User) session.selectOne("com.somnus.mybatis.dao.UserDao.selectByPrimaryKey", 1); 
+    	System.out.println(user.getUserId());
+    	System.out.println("String——>varchar：" + user.getStr2varchar());
+    	System.out.println("String——>date：" + user.getStr2date());
+    	System.out.println("Date——>varchar：" + user.getDate2varchar());
+    	System.out.println("Date——>date：" + user.getDate2date());
+    	System.out.println("Date——>timestamp：" + user.getDate2timestamp());
     }
     
     @Test
