@@ -21,4 +21,28 @@
     where USER_ID = #{userId,jdbcType=INTEGER}
   </select>
   
+  <!-- 在外部for循环调用5000次 -->
+  <insert id="insert" parameterType="com.somnus.mybatis.domain.User">
+    insert into t_user (<include refid="Base_Column_List" />)
+    values (null,#{str2varchar,jdbcType=VARCHAR},
+    #{str2date,jdbcType=DATE},
+    #{date2varchar,jdbcType=VARCHAR}, 
+    #{date2date,jdbcType=DATE}, 
+    #{date2timestamp,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  
+  <!--  批量 ，传入一个长度为5000的list  -->
+  <insert id="insertBatch" parameterType="ArrayList">
+    insert into t_user ( <include refid="Base_Column_List" /> ) 
+    values 
+    <foreach collection="list" item="item" index="index" separator=",">
+        (null,#{item.str2varchar,jdbcType=VARCHAR},
+    #{item.str2date,jdbcType=DATE},
+    #{item.date2varchar,jdbcType=VARCHAR}, 
+    #{item.date2date,jdbcType=DATE}, 
+    #{item.date2timestamp,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  
 </mapper>

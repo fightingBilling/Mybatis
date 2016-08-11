@@ -1,11 +1,16 @@
 package com.somnus;
 
 import java.io.Reader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -44,7 +49,10 @@ public class MybatisTestCase {
     	try {
     		Reader reader = Resources.getResourceAsReader("sqlMapConfig.xml");  
     		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-			session = sqlSessionFactory.openSession();
+    		//用于普通update
+			/*session = sqlSessionFactory.openSession();*/
+    		//用于批量update
+			session = sqlSessionFactory.openSession(ExecutorType.BATCH, true);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
 		}  
@@ -52,6 +60,42 @@ public class MybatisTestCase {
 
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void insert() throws ParseException{
+    	Long beginTime = System.currentTimeMillis();
+    	for(int i =0;i < 1000; i++){
+    		User user = new User();
+    		user.setStr2varchar("2016-10-01");
+    		user.setStr2date("2016-10-01");
+    		user.setDate2varchar(null);
+    		user.setDate2date(new SimpleDateFormat("yyyy-MM-dd").parse("2016-12-01"));
+    		user.setDate2timestamp(new Date());
+    		session.insert("com.somnus.mybatis.dao.UserDao.insert",user);
+    	}
+    	session.commit();
+        session.clearCache();
+    	System.out.println("insert:"+(System.currentTimeMillis() - beginTime));
+    }
+    
+    @Test
+    public void insertBatch() throws ParseException{
+    	List<User> list = new ArrayList<User>();
+    	Long beginTime = System.currentTimeMillis();
+    	for(int i =0;i < 1000; i++){
+    		User user = new User();
+    		user.setStr2varchar("2016-10-01");
+    		user.setStr2date("2016-10-01");
+    		user.setDate2varchar(null);
+    		user.setDate2date(new SimpleDateFormat("yyyy-MM-dd").parse("2016-12-01"));
+    		user.setDate2timestamp(new Date());
+    		list.add(user);
+    	}
+    	session.insert("com.somnus.mybatis.dao.UserDao.insertBatch",list);
+    	session.commit();
+        session.clearCache();
+    	System.out.println("insertBatch:"+(System.currentTimeMillis() - beginTime));
     }
     
     @Test
