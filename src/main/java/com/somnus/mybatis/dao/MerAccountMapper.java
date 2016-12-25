@@ -4,10 +4,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.somnus.mybatis.domain.MerAccount;
 
-
-/*@MyBatisRepository*/
-public interface MerAccountDao {
-	
+public interface MerAccountMapper {
 	/**
 	 * 根据商户号和交易商户号查询交易账户
 	 * */
@@ -37,5 +34,4 @@ public interface MerAccountDao {
 	 * @param acctId
 	 */
 	void deleteByPrimaryKey(Long acctId);
-
 }

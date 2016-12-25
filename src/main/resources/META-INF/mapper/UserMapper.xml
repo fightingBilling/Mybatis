@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.somnus.mybatis.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.somnus.mybatis.domain.User">
+    <id column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="STR_2_VARCHAR" jdbcType="VARCHAR" property="str2Varchar" />
+    <result column="STR_2_DATE" jdbcType="DATE" property="str2Date" />
+    <result column="DATE_2_VARCHAR" jdbcType="VARCHAR" property="date2Varchar" />
+    <result column="DATE_2_DATE" jdbcType="DATE" property="date2Date" />
+    <result column="DATE_2_TIMESTAMP" jdbcType="TIMESTAMP" property="date2Timestamp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_ID, STR_2_VARCHAR, STR_2_DATE, DATE_2_VARCHAR, DATE_2_DATE, DATE_2_TIMESTAMP
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.somnus.mybatis.domain.User">
+    insert into t_user (USER_ID, STR_2_VARCHAR, STR_2_DATE, 
+      DATE_2_VARCHAR, DATE_2_DATE, DATE_2_TIMESTAMP
+      )
+    values (#{userId,jdbcType=INTEGER}, #{str2Varchar,jdbcType=VARCHAR}, #{str2Date,jdbcType=DATE}, 
+      #{date2Varchar,jdbcType=VARCHAR}, #{date2Date,jdbcType=DATE}, #{date2Timestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.somnus.mybatis.domain.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="str2Varchar != null">
+        STR_2_VARCHAR,
+      </if>
+      <if test="str2Date != null">
+        STR_2_DATE,
+      </if>
+      <if test="date2Varchar != null">
+        DATE_2_VARCHAR,
+      </if>
+      <if test="date2Date != null">
+        DATE_2_DATE,
+      </if>
+      <if test="date2Timestamp != null">
+        DATE_2_TIMESTAMP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="str2Varchar != null">
+        #{str2Varchar,jdbcType=VARCHAR},
+      </if>
+      <if test="str2Date != null">
+        #{str2Date,jdbcType=DATE},
+      </if>
+      <if test="date2Varchar != null">
+        #{date2Varchar,jdbcType=VARCHAR},
+      </if>
+      <if test="date2Date != null">
+        #{date2Date,jdbcType=DATE},
+      </if>
+      <if test="date2Timestamp != null">
+        #{date2Timestamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.somnus.mybatis.domain.User">
+    update t_user
+    <set>
+      <if test="str2Varchar != null">
+        STR_2_VARCHAR = #{str2Varchar,jdbcType=VARCHAR},
+      </if>
+      <if test="str2Date != null">
+        STR_2_DATE = #{str2Date,jdbcType=DATE},
+      </if>
+      <if test="date2Varchar != null">
+        DATE_2_VARCHAR = #{date2Varchar,jdbcType=VARCHAR},
+      </if>
+      <if test="date2Date != null">
+        DATE_2_DATE = #{date2Date,jdbcType=DATE},
+      </if>
+      <if test="date2Timestamp != null">
+        DATE_2_TIMESTAMP = #{date2Timestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.somnus.mybatis.domain.User">
+    update t_user
+    set STR_2_VARCHAR = #{str2Varchar,jdbcType=VARCHAR},
+      STR_2_DATE = #{str2Date,jdbcType=DATE},
+      DATE_2_VARCHAR = #{date2Varchar,jdbcType=VARCHAR},
+      DATE_2_DATE = #{date2Date,jdbcType=DATE},
+      DATE_2_TIMESTAMP = #{date2Timestamp,jdbcType=TIMESTAMP}
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

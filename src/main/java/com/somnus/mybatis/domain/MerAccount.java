@@ -1,6 +1,5 @@
 package com.somnus.mybatis.domain;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class MerAccount {
@@ -28,39 +27,7 @@ public class MerAccount {
 
     private String bankAcctName;
 
-    private String stlType;
-
-    private BigDecimal balFloor;
-
-    private Integer autoTransfer;
-
-    private BigDecimal minTransfer;
-
-    private String transferPeriod;
-
-    private String isAutoStl;
-
-    private String beginTransfer;
-
-    private Integer transferPriority;
-
-    private String allowIn;
-
-    private String allowOut;
-
-    private String outFlag;
-
-    private String remark;
-
-    private Integer version;
-
     private String status;
-
-    private String operFlag;
-
-    private String effectDate;
-
-    private String loseEffectDate;
 
     private String modifyBy;
 
@@ -79,7 +46,7 @@ public class MerAccount {
     }
 
     public void setAcctCode(String acctCode) {
-        this.acctCode = acctCode;
+        this.acctCode = acctCode == null ? null : acctCode.trim();
     }
 
     public String getMerCode() {
@@ -87,7 +54,7 @@ public class MerAccount {
     }
 
     public void setMerCode(String merCode) {
-        this.merCode = merCode;
+        this.merCode = merCode == null ? null : merCode.trim();
     }
 
     public String getAcctName() {
@@ -95,7 +62,7 @@ public class MerAccount {
     }
 
     public void setAcctName(String acctName) {
-        this.acctName = acctName;
+        this.acctName = acctName == null ? null : acctName.trim();
     }
 
     public String getCurrency() {
@@ -103,7 +70,7 @@ public class MerAccount {
     }
 
     public void setCurrency(String currency) {
-        this.currency = currency;
+        this.currency = currency == null ? null : currency.trim();
     }
 
     public String getBankCode() {
@@ -111,7 +78,7 @@ public class MerAccount {
     }
 
     public void setBankCode(String bankCode) {
-        this.bankCode = bankCode;
+        this.bankCode = bankCode == null ? null : bankCode.trim();
     }
 
     public String getBankName() {
@@ -119,7 +86,7 @@ public class MerAccount {
     }
 
     public void setBankName(String bankName) {
-        this.bankName = bankName;
+        this.bankName = bankName == null ? null : bankName.trim();
     }
 
     public String getBankKey() {
@@ -127,7 +94,7 @@ public class MerAccount {
     }
 
     public void setBankKey(String bankKey) {
-        this.bankKey = bankKey;
+        this.bankKey = bankKey == null ? null : bankKey.trim();
     }
 
     public String getBranchCode() {
@@ -135,7 +102,7 @@ public class MerAccount {
     }
 
     public void setBranchCode(String branchCode) {
-        this.branchCode = branchCode;
+        this.branchCode = branchCode == null ? null : branchCode.trim();
     }
 
     public String getBranchName() {
@@ -143,7 +110,7 @@ public class MerAccount {
     }
 
     public void setBranchName(String branchName) {
-        this.branchName = branchName;
+        this.branchName = branchName == null ? null : branchName.trim();
     }
 
     public String getBankAcctNo() {
@@ -151,7 +118,7 @@ public class MerAccount {
     }
 
     public void setBankAcctNo(String bankAcctNo) {
-        this.bankAcctNo = bankAcctNo;
+        this.bankAcctNo = bankAcctNo == null ? null : bankAcctNo.trim();
     }
 
     public String getBankAcctName() {
@@ -159,111 +126,7 @@ public class MerAccount {
     }
 
     public void setBankAcctName(String bankAcctName) {
-        this.bankAcctName = bankAcctName;
-    }
-
-    public String getStlType() {
-        return stlType;
-    }
-
-    public void setStlType(String stlType) {
-        this.stlType = stlType;
-    }
-
-    public BigDecimal getBalFloor() {
-        return balFloor;
-    }
-
-    public void setBalFloor(BigDecimal balFloor) {
-        this.balFloor = balFloor;
-    }
-
-    public Integer getAutoTransfer() {
-        return autoTransfer;
-    }
-
-    public void setAutoTransfer(Integer autoTransfer) {
-        this.autoTransfer = autoTransfer;
-    }
-
-    public BigDecimal getMinTransfer() {
-        return minTransfer;
-    }
-
-    public void setMinTransfer(BigDecimal minTransfer) {
-        this.minTransfer = minTransfer;
-    }
-
-    public String getTransferPeriod() {
-        return transferPeriod;
-    }
-
-    public void setTransferPeriod(String transferPeriod) {
-        this.transferPeriod = transferPeriod;
-    }
-
-    public String getIsAutoStl() {
-        return isAutoStl;
-    }
-
-    public void setIsAutoStl(String isAutoStl) {
-        this.isAutoStl = isAutoStl;
-    }
-
-    public String getBeginTransfer() {
-        return beginTransfer;
-    }
-
-    public void setBeginTransfer(String beginTransfer) {
-        this.beginTransfer = beginTransfer;
-    }
-
-    public Integer getTransferPriority() {
-        return transferPriority;
-    }
-
-    public void setTransferPriority(Integer transferPriority) {
-        this.transferPriority = transferPriority;
-    }
-
-    public String getAllowIn() {
-        return allowIn;
-    }
-
-    public void setAllowIn(String allowIn) {
-        this.allowIn = allowIn;
-    }
-
-    public String getAllowOut() {
-        return allowOut;
-    }
-
-    public void setAllowOut(String allowOut) {
-        this.allowOut = allowOut;
-    }
-
-    public String getOutFlag() {
-        return outFlag;
-    }
-
-    public void setOutFlag(String outFlag) {
-        this.outFlag = outFlag;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
+        this.bankAcctName = bankAcctName == null ? null : bankAcctName.trim();
     }
 
     public String getStatus() {
@@ -271,31 +134,7 @@ public class MerAccount {
     }
 
     public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getOperFlag() {
-        return operFlag;
-    }
-
-    public void setOperFlag(String operFlag) {
-        this.operFlag = operFlag;
-    }
-
-    public String getEffectDate() {
-        return effectDate;
-    }
-
-    public void setEffectDate(String effectDate) {
-        this.effectDate = effectDate;
-    }
-
-    public String getLoseEffectDate() {
-        return loseEffectDate;
-    }
-
-    public void setLoseEffectDate(String loseEffectDate) {
-        this.loseEffectDate = loseEffectDate;
+        this.status = status == null ? null : status.trim();
     }
 
     public String getModifyBy() {
@@ -303,7 +142,7 @@ public class MerAccount {
     }
 
     public void setModifyBy(String modifyBy) {
-        this.modifyBy = modifyBy;
+        this.modifyBy = modifyBy == null ? null : modifyBy.trim();
     }
 
     public Date getModifyTime() {

@@ -1,15 +1,15 @@
-package com.somnus.mybatis.dao2;
+package com.somnus.mybatis.dao;
 
-import com.somnus.mybatis.domain2.User;
+import com.somnus.mybatis.domain.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer USER_ID);
+    int deleteByPrimaryKey(Integer userId);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer USER_ID);
+    User selectByPrimaryKey(Integer userId);
 
     int updateByPrimaryKeySelective(User record);
 

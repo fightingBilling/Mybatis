@@ -22,8 +22,8 @@
 
 	<!-- 映射文件 -->
 	<mappers>
-		<mapper resource="com/somnus/mybatis/mapper/meraccount.mapper.xml" />
-		<mapper resource="com/somnus/mybatis/mapper/user.mapper.xml" />
+		<mapper resource="META-INF/mapper/MerAccountMapper.xml" />
+		<mapper resource="META-INF/mapper/UserMapper.xml" />
 	</mappers>
     
 </configuration>

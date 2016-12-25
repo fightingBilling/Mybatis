@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
-import com.somnus.mybatis.dao.MerAccountDao;
+import com.somnus.mybatis.dao.MerAccountMapper;
 import com.somnus.mybatis.domain.MerAccount;
 import com.somnus.mybatis.domain.User;
 
@@ -67,11 +67,11 @@ public class MybatisTestCase {
     	Long beginTime = System.currentTimeMillis();
     	for(int i =0;i < 1000; i++){
     		User user = new User();
-    		user.setStr2varchar("2016-10-01");
-    		user.setStr2date("2016-10-01");
-    		user.setDate2varchar(null);
-    		user.setDate2date(new SimpleDateFormat("yyyy-MM-dd").parse("2016-12-01"));
-    		user.setDate2timestamp(new Date());
+    		user.setStr2Varchar("2016-10-01");
+    		user.setStr2Date("2016-10-01");
+    		user.setDate2Varchar(null);
+    		user.setDate2Date(new SimpleDateFormat("yyyy-MM-dd").parse("2016-12-01"));
+    		user.setDate2Timestamp(new Date());
     		session.insert("com.somnus.mybatis.dao.UserDao.insert",user);
     	}
     	session.commit();
@@ -85,11 +85,11 @@ public class MybatisTestCase {
     	Long beginTime = System.currentTimeMillis();
     	for(int i =0;i < 1000; i++){
     		User user = new User();
-    		user.setStr2varchar("2016-10-01");
-    		user.setStr2date("2016-10-01");
-    		user.setDate2varchar(null);
-    		user.setDate2date(new SimpleDateFormat("yyyy-MM-dd").parse("2016-12-01"));
-    		user.setDate2timestamp(new Date());
+    		user.setStr2Varchar("2016-10-01");
+    		user.setStr2Date("2016-10-01");
+    		user.setDate2Varchar(null);
+    		user.setDate2Date(new SimpleDateFormat("yyyy-MM-dd").parse("2016-12-01"));
+    		user.setDate2Timestamp(new Date());
     		list.add(user);
     	}
     	session.insert("com.somnus.mybatis.dao.UserDao.insertBatch",list);
@@ -102,22 +102,22 @@ public class MybatisTestCase {
     public void 日期映射测试(){
     	User user = (User) session.selectOne("com.somnus.mybatis.dao.UserDao.selectByPrimaryKey", 1); 
     	System.out.println(user.getUserId());
-    	System.out.println("String——>varchar：" + user.getStr2varchar());
-    	System.out.println("String——>date：" + user.getStr2date());
-    	System.out.println("Date——>varchar：" + user.getDate2varchar());
-    	System.out.println("Date——>date：" + user.getDate2date());
-    	System.out.println("Date——>timestamp：" + user.getDate2timestamp());
+    	System.out.println("String——>varchar：" + user.getStr2Varchar());
+    	System.out.println("String——>date：" + user.getStr2Date());
+    	System.out.println("Date——>varchar：" + user.getDate2Varchar());
+    	System.out.println("Date——>date：" + user.getDate2Date());
+    	System.out.println("Date——>timestamp：" + user.getDate2Timestamp());
     }
     
     @Test
     public void load(){
-    	MerAccount meraccount = (MerAccount) session.selectOne("com.somnus.mybatis.dao.MerAccountDao.selectByPrimaryKey", "2000002494"); 
+    	MerAccount meraccount = (MerAccount) session.selectOne("com.somnus.mybatis.dao.MerAccountMapper.selectByPrimaryKey", "2000002494"); 
     	System.out.println(meraccount.getAcctName());
     }
     
     @Test
     public void list(){
-    	List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByAcctcode", "1020550016"); 
+    	List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountMapper.selectByAcctcode", "1020550016"); 
     	for(MerAccount account:list){
     		System.out.println(account.getBankName());
     	}
@@ -128,7 +128,7 @@ public class MybatisTestCase {
         Map<String,String> map = new HashMap<String, String>();
         map.put("acctCode", "1020550016");
         map.put("bankCode", "1100");
-        List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByCondition_", map); 
+        List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountMapper.selectByCondition_", map); 
         for(MerAccount account:list){
             System.out.println(account.getBankName());
         }
@@ -142,7 +142,7 @@ public class MybatisTestCase {
         String sortString = "bank_code.asc,bank_acct_no.desc";
         PageBounds pageBounds = new PageBounds(page, pageSize , Order.formString(sortString));
         
-        PageList<MerAccount> pagelist = (PageList) session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByAcctcode", 
+        PageList<MerAccount> pagelist = (PageList) session.selectList("com.somnus.mybatis.dao.MerAccountMapper.selectByAcctcode", 
                 "1020550016", pageBounds);
         
         int total = pagelist.getPaginator().getTotalCount();//总记录数
@@ -160,8 +160,8 @@ public class MybatisTestCase {
         String sortString = "bank_code.asc,bank_acct_no.desc";
         PageBounds pageBounds = new PageBounds(page, pageSize , Order.formString(sortString));
         
-        MerAccountDao dao = session.getMapper(MerAccountDao.class);
-        PageList<MerAccount> pagelist = dao.selectByAcctcode("1020550016", pageBounds);
+        MerAccountMapper mapper = session.getMapper(MerAccountMapper.class);
+        PageList<MerAccount> pagelist = mapper.selectByAcctcode("1020550016", pageBounds);
         
         int total = pagelist.getPaginator().getTotalCount();//总记录数
         System.out.println(total);
