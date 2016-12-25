@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.somnus.mybatis.dao2.MerAccountMapper">
+  <resultMap id="BaseResultMap" type="com.somnus.mybatis.domain2.MerAccount">
+    <id column="ACCT_ID" jdbcType="INTEGER" property="ACCT_ID" />
+    <result column="ACCT_CODE" jdbcType="VARCHAR" property="ACCT_CODE" />
+    <result column="MER_CODE" jdbcType="VARCHAR" property="MER_CODE" />
+    <result column="ACCT_NAME" jdbcType="VARCHAR" property="ACCT_NAME" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="CURRENCY" />
+    <result column="BANK_CODE" jdbcType="VARCHAR" property="BANK_CODE" />
+    <result column="BANK_NAME" jdbcType="VARCHAR" property="BANK_NAME" />
+    <result column="BANK_KEY" jdbcType="VARCHAR" property="BANK_KEY" />
+    <result column="BRANCH_CODE" jdbcType="VARCHAR" property="BRANCH_CODE" />
+    <result column="BRANCH_NAME" jdbcType="VARCHAR" property="BRANCH_NAME" />
+    <result column="BANK_ACCT_NO" jdbcType="VARCHAR" property="BANK_ACCT_NO" />
+    <result column="BANK_ACCT_NAME" jdbcType="VARCHAR" property="BANK_ACCT_NAME" />
+    <result column="STATUS" jdbcType="VARCHAR" property="STATUS" />
+    <result column="MODIFY_BY" jdbcType="VARCHAR" property="MODIFY_BY" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="MODIFY_TIME" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ACCT_ID, ACCT_CODE, MER_CODE, ACCT_NAME, CURRENCY, BANK_CODE, BANK_NAME, BANK_KEY, 
+    BRANCH_CODE, BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, STATUS, MODIFY_BY, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tcim_mer_account
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tcim_mer_account
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    insert into tcim_mer_account (ACCT_ID, ACCT_CODE, MER_CODE, 
+      ACCT_NAME, CURRENCY, BANK_CODE, 
+      BANK_NAME, BANK_KEY, BRANCH_CODE, 
+      BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, 
+      STATUS, MODIFY_BY, MODIFY_TIME
+      )
+    values (#{ACCT_ID,jdbcType=INTEGER}, #{ACCT_CODE,jdbcType=VARCHAR}, #{MER_CODE,jdbcType=VARCHAR}, 
+      #{ACCT_NAME,jdbcType=VARCHAR}, #{CURRENCY,jdbcType=VARCHAR}, #{BANK_CODE,jdbcType=VARCHAR}, 
+      #{BANK_NAME,jdbcType=VARCHAR}, #{BANK_KEY,jdbcType=VARCHAR}, #{BRANCH_CODE,jdbcType=VARCHAR}, 
+      #{BRANCH_NAME,jdbcType=VARCHAR}, #{BANK_ACCT_NO,jdbcType=VARCHAR}, #{BANK_ACCT_NAME,jdbcType=VARCHAR}, 
+      #{STATUS,jdbcType=VARCHAR}, #{MODIFY_BY,jdbcType=VARCHAR}, #{MODIFY_TIME,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    insert into tcim_mer_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ACCT_ID != null">
+        ACCT_ID,
+      </if>
+      <if test="ACCT_CODE != null">
+        ACCT_CODE,
+      </if>
+      <if test="MER_CODE != null">
+        MER_CODE,
+      </if>
+      <if test="ACCT_NAME != null">
+        ACCT_NAME,
+      </if>
+      <if test="CURRENCY != null">
+        CURRENCY,
+      </if>
+      <if test="BANK_CODE != null">
+        BANK_CODE,
+      </if>
+      <if test="BANK_NAME != null">
+        BANK_NAME,
+      </if>
+      <if test="BANK_KEY != null">
+        BANK_KEY,
+      </if>
+      <if test="BRANCH_CODE != null">
+        BRANCH_CODE,
+      </if>
+      <if test="BRANCH_NAME != null">
+        BRANCH_NAME,
+      </if>
+      <if test="BANK_ACCT_NO != null">
+        BANK_ACCT_NO,
+      </if>
+      <if test="BANK_ACCT_NAME != null">
+        BANK_ACCT_NAME,
+      </if>
+      <if test="STATUS != null">
+        STATUS,
+      </if>
+      <if test="MODIFY_BY != null">
+        MODIFY_BY,
+      </if>
+      <if test="MODIFY_TIME != null">
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ACCT_ID != null">
+        #{ACCT_ID,jdbcType=INTEGER},
+      </if>
+      <if test="ACCT_CODE != null">
+        #{ACCT_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="MER_CODE != null">
+        #{MER_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="ACCT_NAME != null">
+        #{ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CURRENCY != null">
+        #{CURRENCY,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_CODE != null">
+        #{BANK_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_NAME != null">
+        #{BANK_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_KEY != null">
+        #{BANK_KEY,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_CODE != null">
+        #{BRANCH_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_NAME != null">
+        #{BRANCH_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NO != null">
+        #{BANK_ACCT_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NAME != null">
+        #{BANK_ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="STATUS != null">
+        #{STATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_BY != null">
+        #{MODIFY_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_TIME != null">
+        #{MODIFY_TIME,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    update tcim_mer_account
+    <set>
+      <if test="ACCT_CODE != null">
+        ACCT_CODE = #{ACCT_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="MER_CODE != null">
+        MER_CODE = #{MER_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="ACCT_NAME != null">
+        ACCT_NAME = #{ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CURRENCY != null">
+        CURRENCY = #{CURRENCY,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_CODE != null">
+        BANK_CODE = #{BANK_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_NAME != null">
+        BANK_NAME = #{BANK_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_KEY != null">
+        BANK_KEY = #{BANK_KEY,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_CODE != null">
+        BRANCH_CODE = #{BRANCH_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_NAME != null">
+        BRANCH_NAME = #{BRANCH_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NO != null">
+        BANK_ACCT_NO = #{BANK_ACCT_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NAME != null">
+        BANK_ACCT_NAME = #{BANK_ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="STATUS != null">
+        STATUS = #{STATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_BY != null">
+        MODIFY_BY = #{MODIFY_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_TIME != null">
+        MODIFY_TIME = #{MODIFY_TIME,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    update tcim_mer_account
+    set ACCT_CODE = #{ACCT_CODE,jdbcType=VARCHAR},
+      MER_CODE = #{MER_CODE,jdbcType=VARCHAR},
+      ACCT_NAME = #{ACCT_NAME,jdbcType=VARCHAR},
+      CURRENCY = #{CURRENCY,jdbcType=VARCHAR},
+      BANK_CODE = #{BANK_CODE,jdbcType=VARCHAR},
+      BANK_NAME = #{BANK_NAME,jdbcType=VARCHAR},
+      BANK_KEY = #{BANK_KEY,jdbcType=VARCHAR},
+      BRANCH_CODE = #{BRANCH_CODE,jdbcType=VARCHAR},
+      BRANCH_NAME = #{BRANCH_NAME,jdbcType=VARCHAR},
+      BANK_ACCT_NO = #{BANK_ACCT_NO,jdbcType=VARCHAR},
+      BANK_ACCT_NAME = #{BANK_ACCT_NAME,jdbcType=VARCHAR},
+      STATUS = #{STATUS,jdbcType=VARCHAR},
+      MODIFY_BY = #{MODIFY_BY,jdbcType=VARCHAR},
+      MODIFY_TIME = #{MODIFY_TIME,jdbcType=TIMESTAMP}
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.somnus.mybatis.domain2.MerAccount">
+    <id column="ACCT_ID" jdbcType="INTEGER" property="ACCT_ID" />
+    <result column="ACCT_CODE" jdbcType="VARCHAR" property="ACCT_CODE" />
+    <result column="MER_CODE" jdbcType="VARCHAR" property="MER_CODE" />
+    <result column="ACCT_NAME" jdbcType="VARCHAR" property="ACCT_NAME" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="CURRENCY" />
+    <result column="BANK_CODE" jdbcType="VARCHAR" property="BANK_CODE" />
+    <result column="BANK_NAME" jdbcType="VARCHAR" property="BANK_NAME" />
+    <result column="BANK_KEY" jdbcType="VARCHAR" property="BANK_KEY" />
+    <result column="BRANCH_CODE" jdbcType="VARCHAR" property="BRANCH_CODE" />
+    <result column="BRANCH_NAME" jdbcType="VARCHAR" property="BRANCH_NAME" />
+    <result column="BANK_ACCT_NO" jdbcType="VARCHAR" property="BANK_ACCT_NO" />
+    <result column="BANK_ACCT_NAME" jdbcType="VARCHAR" property="BANK_ACCT_NAME" />
+    <result column="STATUS" jdbcType="VARCHAR" property="STATUS" />
+    <result column="MODIFY_BY" jdbcType="VARCHAR" property="MODIFY_BY" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="MODIFY_TIME" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ACCT_ID, ACCT_CODE, MER_CODE, ACCT_NAME, CURRENCY, BANK_CODE, BANK_NAME, BANK_KEY, 
+    BRANCH_CODE, BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, STATUS, MODIFY_BY, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tcim_mer_account
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tcim_mer_account
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    insert into tcim_mer_account (ACCT_ID, ACCT_CODE, MER_CODE, 
+      ACCT_NAME, CURRENCY, BANK_CODE, 
+      BANK_NAME, BANK_KEY, BRANCH_CODE, 
+      BRANCH_NAME, BANK_ACCT_NO, BANK_ACCT_NAME, 
+      STATUS, MODIFY_BY, MODIFY_TIME
+      )
+    values (#{ACCT_ID,jdbcType=INTEGER}, #{ACCT_CODE,jdbcType=VARCHAR}, #{MER_CODE,jdbcType=VARCHAR}, 
+      #{ACCT_NAME,jdbcType=VARCHAR}, #{CURRENCY,jdbcType=VARCHAR}, #{BANK_CODE,jdbcType=VARCHAR}, 
+      #{BANK_NAME,jdbcType=VARCHAR}, #{BANK_KEY,jdbcType=VARCHAR}, #{BRANCH_CODE,jdbcType=VARCHAR}, 
+      #{BRANCH_NAME,jdbcType=VARCHAR}, #{BANK_ACCT_NO,jdbcType=VARCHAR}, #{BANK_ACCT_NAME,jdbcType=VARCHAR}, 
+      #{STATUS,jdbcType=VARCHAR}, #{MODIFY_BY,jdbcType=VARCHAR}, #{MODIFY_TIME,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    insert into tcim_mer_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ACCT_ID != null">
+        ACCT_ID,
+      </if>
+      <if test="ACCT_CODE != null">
+        ACCT_CODE,
+      </if>
+      <if test="MER_CODE != null">
+        MER_CODE,
+      </if>
+      <if test="ACCT_NAME != null">
+        ACCT_NAME,
+      </if>
+      <if test="CURRENCY != null">
+        CURRENCY,
+      </if>
+      <if test="BANK_CODE != null">
+        BANK_CODE,
+      </if>
+      <if test="BANK_NAME != null">
+        BANK_NAME,
+      </if>
+      <if test="BANK_KEY != null">
+        BANK_KEY,
+      </if>
+      <if test="BRANCH_CODE != null">
+        BRANCH_CODE,
+      </if>
+      <if test="BRANCH_NAME != null">
+        BRANCH_NAME,
+      </if>
+      <if test="BANK_ACCT_NO != null">
+        BANK_ACCT_NO,
+      </if>
+      <if test="BANK_ACCT_NAME != null">
+        BANK_ACCT_NAME,
+      </if>
+      <if test="STATUS != null">
+        STATUS,
+      </if>
+      <if test="MODIFY_BY != null">
+        MODIFY_BY,
+      </if>
+      <if test="MODIFY_TIME != null">
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ACCT_ID != null">
+        #{ACCT_ID,jdbcType=INTEGER},
+      </if>
+      <if test="ACCT_CODE != null">
+        #{ACCT_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="MER_CODE != null">
+        #{MER_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="ACCT_NAME != null">
+        #{ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CURRENCY != null">
+        #{CURRENCY,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_CODE != null">
+        #{BANK_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_NAME != null">
+        #{BANK_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_KEY != null">
+        #{BANK_KEY,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_CODE != null">
+        #{BRANCH_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_NAME != null">
+        #{BRANCH_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NO != null">
+        #{BANK_ACCT_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NAME != null">
+        #{BANK_ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="STATUS != null">
+        #{STATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_BY != null">
+        #{MODIFY_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_TIME != null">
+        #{MODIFY_TIME,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    update tcim_mer_account
+    <set>
+      <if test="ACCT_CODE != null">
+        ACCT_CODE = #{ACCT_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="MER_CODE != null">
+        MER_CODE = #{MER_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="ACCT_NAME != null">
+        ACCT_NAME = #{ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="CURRENCY != null">
+        CURRENCY = #{CURRENCY,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_CODE != null">
+        BANK_CODE = #{BANK_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_NAME != null">
+        BANK_NAME = #{BANK_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_KEY != null">
+        BANK_KEY = #{BANK_KEY,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_CODE != null">
+        BRANCH_CODE = #{BRANCH_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="BRANCH_NAME != null">
+        BRANCH_NAME = #{BRANCH_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NO != null">
+        BANK_ACCT_NO = #{BANK_ACCT_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="BANK_ACCT_NAME != null">
+        BANK_ACCT_NAME = #{BANK_ACCT_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="STATUS != null">
+        STATUS = #{STATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_BY != null">
+        MODIFY_BY = #{MODIFY_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="MODIFY_TIME != null">
+        MODIFY_TIME = #{MODIFY_TIME,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.somnus.mybatis.domain2.MerAccount">
+    update tcim_mer_account
+    set ACCT_CODE = #{ACCT_CODE,jdbcType=VARCHAR},
+      MER_CODE = #{MER_CODE,jdbcType=VARCHAR},
+      ACCT_NAME = #{ACCT_NAME,jdbcType=VARCHAR},
+      CURRENCY = #{CURRENCY,jdbcType=VARCHAR},
+      BANK_CODE = #{BANK_CODE,jdbcType=VARCHAR},
+      BANK_NAME = #{BANK_NAME,jdbcType=VARCHAR},
+      BANK_KEY = #{BANK_KEY,jdbcType=VARCHAR},
+      BRANCH_CODE = #{BRANCH_CODE,jdbcType=VARCHAR},
+      BRANCH_NAME = #{BRANCH_NAME,jdbcType=VARCHAR},
+      BANK_ACCT_NO = #{BANK_ACCT_NO,jdbcType=VARCHAR},
+      BANK_ACCT_NAME = #{BANK_ACCT_NAME,jdbcType=VARCHAR},
+      STATUS = #{STATUS,jdbcType=VARCHAR},
+      MODIFY_BY = #{MODIFY_BY,jdbcType=VARCHAR},
+      MODIFY_TIME = #{MODIFY_TIME,jdbcType=TIMESTAMP}
+    where ACCT_ID = #{ACCT_ID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 配置属性文件，这样有变更只需改配置文件 -->
+	<properties resource="generatorConfig.properties"/>
+	
+	<!-- 制定mysql的驱动包的路径 千万别放中文路径下 -->
+	<classPathEntry location="E:\maven\repository\mysql\mysql-connector-java\5.1.27\mysql-connector-java-5.1.27.jar" />
+	
+	<!-- 配置数据源和生成的代码所存放的位置 -->
+	<context id="mybaits" targetRuntime="MyBatis3">
+		<!-- 是否去除自动生成的注释 true：是 ： false:否 --> 
+		<commentGenerator>
+			<property name="suppressAllComments" value="${suppressAllComments}"/>
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="${driverClass}" connectionURL="${url}" userId="${username}" password="${password}" />
+		
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer ;true，把JDBC DECIMAL 和 
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+		
+		<!-- 生成模型的包名和位置--> 
+		<javaModelGenerator targetPackage="${modeltargetPackage}" targetProject="${targetProject}" />
+		
+		<!-- 生成映射文件的包名和位置-->
+		<sqlMapGenerator targetPackage="${sqltargetPackage}" targetProject="${targetProject}" />
+		
+		<!-- 生成DAO的包名和位置--> 	
+		<javaClientGenerator targetPackage="${clienttargetPackage}" targetProject="${targetProject}" type="XMLMAPPER" /> 
+
+		<!-- 为哪些表生成代码 tableName:表名 schema:不用填写 -->
+		<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table schema="" tableName="tcim_mer_account" domainObjectName="MerAccount" mapperName="MerAccountMapper"
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+        </table>
+		<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->  
+        <table schema="" tableName="t_user" domainObjectName="User" 
+            enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+        </table>
+	</context>
+</generatorConfiguration>
