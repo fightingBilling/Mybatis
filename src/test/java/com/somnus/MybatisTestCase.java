@@ -111,7 +111,7 @@ public class MybatisTestCase {
     
     @Test
     public void load(){
-    	MerAccount meraccount = (MerAccount) session.selectOne("com.somnus.mybatis.dao.MerAccountDao.selectByPrimaryKey", "2000002493"); 
+    	MerAccount meraccount = (MerAccount) session.selectOne("com.somnus.mybatis.dao.MerAccountDao.selectByPrimaryKey", "2000002494"); 
     	System.out.println(meraccount.getAcctName());
     }
     
@@ -128,7 +128,7 @@ public class MybatisTestCase {
         Map<String,String> map = new HashMap<String, String>();
         map.put("acctCode", "1020550016");
         map.put("bankCode", "1100");
-        List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByCondition", map); 
+        List<MerAccount> list = session.selectList("com.somnus.mybatis.dao.MerAccountDao.selectByCondition_", map); 
         for(MerAccount account:list){
             System.out.println(account.getBankName());
         }
